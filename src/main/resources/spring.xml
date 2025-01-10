@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    Now beans are the Java classes that we define and which spring will create or destroy in its container for us-->
+    <bean id="Doctorbro" class="org.src.Doctor">
+        <constructor-arg value="MBBS"></constructor-arg>
+        <property name="qualification" value="Not MBBS"></property> <!-- this is how we define properties and
+        assign values through constructor and here i am just overriding it immediately in next line so thats
+        why that difference wont be visible-->
+    </bean>
+<!--    we can create however many beans and similarly we can create more than one bean for one class as well based on our needs-->
+    <bean id="Nurse" class="org.src.Nurse">
+    </bean>
+</beans>
