@@ -10,6 +10,7 @@ public class Main {
 //        Doctor doctorObj = new Doctor();     // java was of creating objects.
         doctorObj.cure();
         System.out.println(doctorObj.getQualification());
+        Doctor doctorObj2 = (Doctor) context.getBean("Doctorbro");
 
     }
 }
