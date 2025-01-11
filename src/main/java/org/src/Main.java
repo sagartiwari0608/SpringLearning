@@ -22,7 +22,7 @@ public class Main {
 
 
 //        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-////        following is a way to GetBean with name and then we need to typecast it to a specific object that we want.
+////        following is a way to GetBean with name, and then we need to typecast it to a specific object that we want.
 //        Patient patientObj = (Patient) context.getBean("Patient");
 ////        Doctor doctorObj = new Doctor();     // java was of creating objects.
 //        patientObj.getExaminer().assist();
