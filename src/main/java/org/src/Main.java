@@ -2,7 +2,7 @@ package org.src;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.src.config.AppConfig;
 
 public class Main {
@@ -19,6 +19,7 @@ public class Main {
 //        doctor1Obj.assist(); // this wont work because same reason name is provided hence default name isn't considered
         Patient patient = context.getBean("patient", Patient.class);
         patient.getExaminer().assist();
+        System.out.println(patient.getProblem());
 
 
 //        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");

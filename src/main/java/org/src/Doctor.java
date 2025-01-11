@@ -1,5 +1,12 @@
 package org.src;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Primary
+@Scope("singleton")
 public class Doctor implements Examiner {
     private String qualification;
 
