@@ -3,15 +3,25 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--    Now beans are the Java classes that we define and which spring will create or destroy in its container for us-->
-    <bean id="Doctorbro" class="org.src.Doctor" scope="singleton">
-        <constructor-arg value="MBBS"/><!-- this is custructor injection -->
-        <property name="qualification" value="Not MBBS"/> <!-- this is how we set class properties and
+    <bean id="Patient" class="org.src.Patient" scope="singleton" autowire="byName">
+        <!-- Here this singleton scope is default even if don't mention it and this means every bean will be created exactly once for whole application. and this will allow us to share data in between other class files.-->
+        <!-- <constructor-arg name="qualification" index="0" type="int" value="MBBS"/> -->
+        <!-- this is constructor injection works when we have a constructor with arguments and here we see index, type and name these are all used to differentiate in case of multiple arguments and type will not work in case of 2 variables of same type and name will be helpful for developers but working is similar to sequence  -->
+        <!-- <property name="qualification" value="Not MBBS"/>  -->
+        <!-- this is how we set class properties and
         this is known as setter injection and this method will work with the help of setter method.
         assign values through constructor and here I am just overriding it immediately in next line so that's
         why that difference won't be visible-->
-        <property name="assistor" ref="Nurse"/>
-        <!-- here we use ref instead of value in tag and this is also done through setter injection -->
+        <property name="examiner">
+            <bean id="examiner" class="org.src.Nurse"/>
+            <!-- Now this bean will be used for this exact named variable and will be available only to this parent bean which is doctorbro-->
+        </property>
+        <!-- now if we have autowired mentioned here and if we don't mention the reference it should work
+         here we use ref instead of value in tag and this is also done through setter injection and the reference that we are referencing here should be created as it is created here below -->
     </bean>
-    <!-- we can create however many beans, and similarly we can create more than one bean for one class as well based on our needs-->
-    <bean id="Nurse" class="org.src.Nurse" scope="prototype"/>
+    <!-- we can create however many beans, and similarly we can create more than one bean for one class as well based on our needs by just duplicating one bean definition.-->
+    <!-- <bean id="Nurse" class="org.src.Nurse" scope="prototype"/>  here the scope mentioned as prototype is used to tell spring that we need new instance of this bean everytime its methods are called if we want a fresh new instance for everything-->
+    <bean id="Nurse" class="org.src.Nurse" primary="true"/>
+    <bean id="Doctor" class="org.src.Doctor" lazy-init="true"/>
+    <!--    By adding this lazy-init=true as the name suggests this bean will now load later instead of loading initially on the time of application context creation-->
 </beans>

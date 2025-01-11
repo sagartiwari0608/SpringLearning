@@ -1,13 +1,20 @@
 package org.src;
 
-public class Doctor {
+public class Doctor implements Examiner {
     private String qualification;
-    private Nurse assistor;
 
+    public Doctor() {
+        System.out.println("doctor constructor called");
+    }
 
-    Doctor(String qualification) {
-        System.out.println("doctor constructor");
-        this.qualification = qualification;
+    // Doctor(String qualification) {
+    // System.out.println("doctor constructor");
+    // this.qualification = qualification;
+    // }
+
+    @Override
+    public void assist() {
+        System.out.println("doctor is assisting here");
     }
 
     public void cure() {
@@ -22,12 +29,5 @@ public class Doctor {
         this.qualification = qualification;
     }
 
-    public Nurse getAssistor() {
-        return assistor;
-    }
-
-    public void setAssistor(Nurse assistor) {
-        this.assistor = assistor;
-    }
 
 }
