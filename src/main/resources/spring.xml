@@ -2,15 +2,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    Now beans are the Java classes that we define and which spring will create or destroy in its container for us-->
+    <!--    Now beans are the Java classes that we define and which spring will create or destroy in its container for us-->
     <bean id="Doctorbro" class="org.src.Doctor" scope="singleton">
-        <constructor-arg value="MBBS"/>
+        <constructor-arg value="MBBS"/><!-- this is custructor injection -->
         <property name="qualification" value="Not MBBS"/> <!-- this is how we set class properties and
         this is known as setter injection and this method will work with the help of setter method.
         assign values through constructor and here I am just overriding it immediately in next line so that's
         why that difference won't be visible-->
+        <property name="assistor" ref="Nurse"/>
+        <!-- here we use ref instead of value in tag and this is also done through setter injection -->
     </bean>
-<!--    we can create however many beans, and similarly we can create more than one bean for one class as well based on our needs-->
-    <bean id="Nurse" class="org.src.Nurse" scope="prototype">
-    </bean>
+    <!-- we can create however many beans, and similarly we can create more than one bean for one class as well based on our needs-->
+    <bean id="Nurse" class="org.src.Nurse" scope="prototype"/>
 </beans>
